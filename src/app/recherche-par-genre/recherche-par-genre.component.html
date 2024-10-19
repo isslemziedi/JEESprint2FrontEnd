@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+      <label>Genres</label>
+      <select class="form-control form-control-lg" id="idGenre" name="idGenre" [(ngModel)]="IdG" (change)="onChange()">
+        <option value="" disabled selected>Select Genre</option> <!-- Placeholder option -->
+        <option *ngFor="let g of genres" [value]="g.idGenre">{{g.nomGenre}}</option>
+      </select>
+    </div>
+  
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom Livre</th>
+              <th>Nom Auteur</th>
+              <th>Prix</th>
+              <th>Date Publication</th>
+              <th>Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let livre of livres">
+              <td>{{livre.idLivre}}</td>
+              <td>{{livre.nomLivre}}</td>
+              <td>{{livre.nomAuteur}}</td>
+              <td>{{livre.prixLivre}}</td>
+              <td>{{livre.datePublication | date:'dd/MM/yyyy'}}</td>
+              <td>{{livre.genre.nomGenre}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

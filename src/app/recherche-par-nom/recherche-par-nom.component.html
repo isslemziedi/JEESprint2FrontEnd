@@ -1,0 +1,49 @@
+<div class="container">
+    <!-- (recherche api) -->
+    <!-- <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Livre</label>
+            <input type="text" class="form-control" [(ngModel)]="nomLivre" name="nomLivre" class="form-control">
+            <button type="submit" (click)="rechercherLivs()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+        </div>
+    </form> -->
+
+    <!-- (recherche key up) -->
+    <!-- <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Nom Produit en tapant</label>
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+    </form> -->
+
+    <!-- recherche par pipe-->
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Livre en tapant </label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+    </form>
+
+        
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr> 
+                    <th>Id</th><th>Nom Livre</th><th>Nom Auteur</th><th>Prix</th><th>Date Publication</th><th>Genre</th> 
+                </tr>
+                <tbody>
+                    <tr *ngFor="let livre of livres  | searchFilter: searchTerm  ">
+                        <td>{{livre.idLivre}}</td>
+                        <td>{{livre.nomLivre}}</td>
+                        <td>{{livre.nomAuteur}}</td>
+                        <td>{{livre.prixLivre}}</td>
+                        <td>{{livre.datePublication | date:'dd/MM/yyyy'}}</td>
+                        <td>{{livre.genre.nomGenre}}</td>
+                        <!-- <td><a class="btn btn-success" [routerLink]="['/updateLivre',livre.idLivre]">Modifier</a></td>
+                        <td><a class="btn btn-danger" (click)="supprimerLivre(livre)">Supprimer</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

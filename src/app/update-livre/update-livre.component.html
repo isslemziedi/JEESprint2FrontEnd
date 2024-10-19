@@ -1,0 +1,37 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Livre :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Livre</label>
+            <input readonly type="text" [(ngModel)]="currentLivre.idLivre" name="idLivre" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Livre</label>
+            <input type="text" [(ngModel)]="currentLivre.nomLivre" name="nomLivre" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Auteur</label>
+            <input type="text" [(ngModel)]="currentLivre.nomAuteur" name="nomAuteur" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Livre</label>
+            <input type="number" [(ngModel)]="currentLivre.prixLivre" name="prixLivre" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date Publication</label>
+            <input type="date" [ngModel]="currentLivre.datePublication | date: 'yyyy-MM-dd'" 
+                   (ngModelChange)="currentLivre.datePublication = $event" name="datePublication" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Genre</label>
+            <select class="form-control form-control-lg" id="idGenre" name="idGenre" [(ngModel)]="updatedGenreId">
+                <option *ngFor="let g of genres" [value]="g.idGenre">{{g.nomGenre}}</option>
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="button" (click)="updateLivre()" class="btn btn-success">Modifier</button>
+        </div>
+    </form>
+</div>
